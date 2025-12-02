@@ -258,4 +258,4 @@ def tictactoe(rows: int, cols: int, human_starts: bool = True) -> None:
 
 
 
-tictactoe(20, 20, human_starts=False)
+tictactoe(6, 6, human_starts=False)
