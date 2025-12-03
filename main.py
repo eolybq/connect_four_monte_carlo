@@ -2,6 +2,7 @@ from typing import List, Dict
 from random import randint
 
 
+
 def is_won(state):
     """
     Funkce zkontroluje vsechny radky, sloupce a diagonaly pro urceni vyhry
@@ -50,7 +51,6 @@ def is_tie(state):
     Kontroluje remizu - zda neni je hraci plan plny
     """
     return all(cell != " " for row in state for cell in row)
-
     
 
 
@@ -75,7 +75,6 @@ def make_move(move, state, symbol):
     
 
 
-
 def human_move(state):
     """
     Tah hrace - vola input dokud tah neni platny
@@ -86,8 +85,6 @@ def human_move(state):
         move = int(input(f"Do jakeho sloupce chces hrat? (od 0 do {len(state[0]) - 1})?"))
 
     return move
-
-
 
 
 
@@ -143,8 +140,6 @@ def one_sim(state, move, symbols):
 
 
 
-
-
 def monte_carlo_sim(state, move, symbols, sim_count=300):
     """
     Pro kandidatni tah "move" spusti jednu iteraci monte carlo simulace "sim_count" krat
@@ -160,34 +155,6 @@ def monte_carlo_sim(state, move, symbols, sim_count=300):
 
     
 
-
-# Funkce vypise dany plan na standardni vystup. Plan je reprezentovan seznamem
-#  seznamu stejne delky, ktere obsahuji znaky X (krizek), O (kolecko) nebo
-#  mezera pro neobsazene pole.
-
-# :param state:  Seznam seznamu obsahujici znaky X, 0, a mezera
-def show_state(state: List[List[str]]) -> None:
-    separator_list = ["-" for _col in state[0]]
-    col_list = [i for i in range(len(state[0]))]
-
-    for row in state:
-        print(*row)
-
-    print(*separator_list)
-    print(*col_list)
-
-
-
-
-
-# Funkce pro dany plan state a symbol chr vrati pozici (sloupec) tahu
-# pocitace.
-# Pozn. Funkce neresi zadnou logiku hry ani vypisy, jen vraci sloupec, kam
-# umistuje pocitac svuj symbol.
-
-#    :param state:  Seznam seznamu obsahujici znaky X, 0, a mezera
-#    :param chr:    Znak, ktery se ma vlozit
-#    :return:       Sloupec, do ktereho se ma vlozit znak chr
 def strategy(state: List[List[str]], symbols: Dict[str, str]) -> int:
     """
     funkce pomoci valid_move najde vsechny platne tahy
@@ -207,12 +174,18 @@ def strategy(state: List[List[str]], symbols: Dict[str, str]) -> int:
 
 
 
-# Funkce umoznuje hrat hru padajicich piskvorek na planu o danem poctu radku
-# a sloupcu.
+def show_state(state: List[List[str]]) -> None:
+    separator_list = ["-" for _col in state[0]]
+    col_list = [i for i in range(len(state[0]))]
 
-#   :param rows:    Pocet radku (4..25)
-#   :param cols:    Pocet sloupcu (4..25)
-#   :param human_starts: True, pokud zacina hrac, False jinak
+    for row in state:
+        print(*row)
+
+    print(*separator_list)
+    print(*col_list)
+
+
+
 
 
 def tictactoe(rows: int, cols: int, human_starts: bool = True) -> None:
