@@ -20,7 +20,7 @@ The core of this project is a simulation-based decision-making algorithm that al
 Requires Python 3. No external dependencies needed.
 
 ```bash
-python game.py
+python main.py
 ```
 
 ## Configuration
